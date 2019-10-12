@@ -47,8 +47,12 @@ will adjust these tags on the selected task or tasks:
 * A task with "☀️ Today" is demoted back to the first level by having that tag
   replaced by "▶️ Next".
 
-This plugin _works_ on iOS, but it's probably easiest to just use the Flag and
-Tag swipe actions there.
+This plugin _works_ on iOS, and is reasonably convenient to use on the iPad
+because the automation menu icon appears in most of the contexts you'd want
+to apply this plugin. On the iPhone, though, the automation menu icon isn't
+present in a lot of situations: until that changes, it's probably easiest to
+swipe right on individual tasks and use the "Tag" and "Flag" actions. This is
+one reason why I use "☀️ Today" as my forecast tag.
 
 [OmniFocus]: https://www.omnigroup.com/omnifocus
 [The Omni Group]: https://www.omnigroup.com
