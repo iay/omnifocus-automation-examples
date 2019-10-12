@@ -1,0 +1,31 @@
+/*{
+  "type": "action",
+  "targets": ["omnifocus"],
+  "author": "Ian Young",
+  "identifier": "uk.org.iay.omnifocus.examples.defocus",
+  "version": "1.0",
+  "description": "Clear any current focus set.",
+  "label": "x Defocus",
+  "shortLabel": "Defocus"
+}*/
+var _ = function(){
+  var action = new PlugIn.Action(function(selection, sender){
+
+    //
+    // Whatever the current focus state is, remove focus entirely.
+    // Unlike the standard Shift+Command+F keybind, this will not
+    // change meaning when we are already in an unfocused state.
+    //
+    document.windows[0].focus = null
+  });
+
+  action.validate = function(selection, sender){
+    //
+    // This action is always valid.
+    //
+    return true
+  };
+
+  return action;
+}();
+_;

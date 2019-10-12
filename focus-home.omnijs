@@ -1,0 +1,34 @@
+/*{
+  "type": "action",
+  "targets": ["omnifocus"],
+  "author": "Ian Young",
+  "identifier": "uk.org.iay.omnifocus.examples.focus.home",
+  "version": "1.0",
+  "description": "Focus on home-related folders only.",
+  "label": "x Focus: Home",
+  "shortLabel": "Focus: Home"
+}*/
+var _ = function(){
+  var action = new PlugIn.Action(function(selection, sender){
+
+    //
+    // Collect up an array of the things we want to set as our focus.
+    // This can be any mixture of projects and folders. For the example,
+    // we just include a couple of top-level folders.
+    //
+    var itemsToFocus = new Array()
+    itemsToFocus.push(folderNamed('Personal'))
+    itemsToFocus.push(folderNamed('Household'))
+    document.windows[0].focus = itemsToFocus
+  });
+
+  action.validate = function(selection, sender){
+    //
+    // This action is always valid.
+    //
+    return true
+  };
+
+  return action;
+}();
+_;
