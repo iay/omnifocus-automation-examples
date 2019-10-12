@@ -1,0 +1,53 @@
+/*{
+  "type": "action",
+  "targets": ["omnifocus"],
+  "author": "Ian Young",
+  "identifier": "uk.org.iay.omnifocus.examples.promoteDemote",
+  "version": "1.0",
+  "description": "Toggle promotion tags.",
+  "label": "x Promote/demote",
+  "shortLabel": "Promote/demote"
+}*/
+var _ = function(){
+  var action = new PlugIn.Action(function(selection, sender){
+
+    // Names of the tags used for first and second levels of selection.
+    var tagNameOne = '▶️ Next';
+    var tagNameTwo = '☀️ Today';
+
+    // Find (or create) the two top-level tags with those names.
+    var tagOne = tagNamed(tagNameOne) || new Tag(tagNameOne)
+    var tagTwo = tagNamed(tagNameTwo) || new Tag(tagNameTwo)
+
+    // Process each selected task in turn
+    selection.tasks.forEach(function(task){
+      if (task.tags.includes(tagOne)) {
+        //
+        // If the item is already tagged at the first level, remove that tag
+        // and promote it to the second level.
+        //
+        task.removeTag(tagOne)
+        task.addTag(tagTwo)
+      } else {
+        //
+        // If the item is not already tagged at the first level, remove any
+        // second-level tag (if present) and then tag it for the first level.
+        // This has the effect of promoting an untagged item to the first
+        // level, and of _demoting_ a second level item back to the first.
+        //
+        task.removeTag(tagTwo)
+        task.addTag(tagOne)
+      }
+    })
+  });
+
+  action.validate = function(selection, sender){
+    //
+    // This action is valid on a selection with at least one task.
+    //
+    return (selection.tasks.length > 0)
+  };
+
+  return action;
+}();
+_;
