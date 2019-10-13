@@ -29,6 +29,9 @@ OmniFocus, Pro or otherwise.
   non-client items). You can focus on any mixture of folders and
   projects that you can navigate to through the API.
 
+I wrote [a blog post](https://iay.org.uk/blog/2019/10/13/omnifocus-automation/)
+about how I use these actions.
+
 ## Funnel Selection: Promote/demote
 
 One part of my current workflow involves selecting candidates from a large
