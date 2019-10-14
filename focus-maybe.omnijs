@@ -1,0 +1,48 @@
+/*{
+  "type": "action",
+  "targets": ["omnifocus"],
+  "author": "Ian Young",
+  "identifier": "uk.org.iay.omnifocus.examples.focus.maybe",
+  "version": "1.0",
+  "description": "Focus on the maybe projects only.",
+  "label": "x Focus: Maybe",
+  "shortLabel": "Focus: maybe"
+}*/
+var _ = function(){
+  var action = new PlugIn.Action(function(selection, sender){
+
+    //
+    // Navigate to the Maybe tag.
+    //
+    var whenTag = tagNamed('When')
+    var maybeTag = whenTag.tagNamed('? Maybe')
+
+    //
+    // Collect up an array of the things we want to set as our focus.
+    //
+    var itemsToFocus = new Array()
+
+    //
+    // Add any projects with this tag.
+    // Ignore completed and dropped projects.
+    //
+    maybeTag.projects.forEach(project => {
+      if (project.status != Project.Status.Done &&
+          project.status != Project.Status.Dropped) {
+        itemsToFocus.push(project)
+      }
+    })
+
+    document.windows[0].focus = itemsToFocus
+  });
+
+  action.validate = function(selection, sender){
+    //
+    // This action is always valid.
+    //
+    return true
+  };
+
+  return action;
+}();
+_;

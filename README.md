@@ -29,6 +29,12 @@ OmniFocus, Pro or otherwise.
   non-client items). You can focus on any mixture of folders and
   projects that you can navigate to through the API.
 
+* **Focus: Maybe** Focuses down on projects with a particular tag. I have a tag
+  group called "When"; inside it I have a tag called "? Maybe" and another
+  called "🔮 Someday". I use two instances of this action to select just my
+  "someday/maybe" lists. These are always marked as on hold, but the selection
+  process ignores projects marked Done or Dropped.
+
 I wrote [a blog post](https://iay.org.uk/blog/2019/10/13/omnifocus-automation/)
 about how I use these actions.
 
